@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Do you love me?</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
@@ -21,13 +22,13 @@
 
     #questionContainer {
       position: relative;
-      max-width: 90%;
-      width: 400px;
-      min-height: 450px;
+      width: 90%;
+      max-width: 400px;
+      min-height: 60vh;
       background: white;
       border-radius: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      padding: 30px;
+      padding: 30px 20px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -42,13 +43,13 @@
     }
 
     #gif {
-      width: 100px;
+      width: 120px;
       margin-bottom: 20px;
     }
 
     h2 {
       font-size: 22px;
-      margin-bottom: 40px;
+      margin-bottom: 60px;
       color: #444;
       text-align: center;
     }
@@ -62,7 +63,7 @@
       color: white;
       cursor: pointer;
       position: absolute;
-      transition: all 0.4s ease;
+      transition: all 0.3s ease;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
@@ -110,6 +111,7 @@
       color: #ff4d6d;
       animation: floatUp 3s ease-in forwards;
       opacity: 0.8;
+      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -119,12 +121,16 @@
 
     @media (max-width: 500px) {
       #questionContainer {
-        min-height: 380px;
+        min-height: 70vh;
         padding: 20px;
       }
       #yesBtn, #noBtn {
         font-size: 14px;
         padding: 10px 20px;
+      }
+      h2 {
+        font-size: 18px;
+        margin-bottom: 40px;
       }
     }
   </style>
@@ -132,12 +138,12 @@
 <body>
   <div id="questionContainer">
     <img id="gif" src="https://media.giphy.com/media/ZebTmyvw85gnm/giphy.gif" alt="cute gif">
-    <h2>Do you love me nigha? 💖</h2>
+    <h2>Do you love me? 💖</h2>
     <button id="yesBtn">Yes</button>
     <button id="noBtn">No</button>
     <div id="result">
-      <img src="1.jpg" alt="love gif">
-      <p>Yay! I love you too nigha❤️</p>
+      <img src="1.jpg" alt="love pic">
+      <p>Yay! I love you too ❤️</p>
     </div>
   </div>
 
@@ -159,7 +165,7 @@
       const containerWidth = questionContainer.offsetWidth - noBtn.offsetWidth;
       const containerHeight = questionContainer.offsetHeight - noBtn.offsetHeight;
       const newX = Math.floor(Math.random() * containerWidth);
-      const newY = Math.floor(Math.random() * containerHeight);
+      const newY = Math.floor(Math.random() * containerHeight * 0.8);
 
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
@@ -175,7 +181,7 @@
       } 
       if (noClickCount === 5) {
         noSound.play();
-        noBtn.style.display = "none"; // hide No button
+        noBtn.style.display = "none"; 
       }
       moveNoBtn();
     });
@@ -189,7 +195,7 @@
       result.style.display = "block";
 
       // create floating hearts
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 12; i++) {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerText = "❤️";
