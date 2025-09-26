@@ -6,7 +6,7 @@
   <title>Do you love me?</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
+    
     body {
       font-family: 'Poppins', sans-serif;
       text-align: center;
@@ -22,13 +22,13 @@
 
     #questionContainer {
       position: relative;
-      width: 90%;
-      max-width: 400px;
-      min-height: 60vh;
+      max-width: 90%;
+      width: 600px; /* Increased from 400px */
+      min-height: 550px; /* Increased from 450px */
       background: white;
       border-radius: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      padding: 30px 20px;
+      padding: 40px; /* Increased padding */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -43,27 +43,27 @@
     }
 
     #gif {
-      width: 120px;
-      margin-bottom: 20px;
+      width: 150px; /* Increased from 100px */
+      margin-bottom: 30px; /* Increased margin */
     }
 
     h2 {
-      font-size: 22px;
-      margin-bottom: 60px;
+      font-size: 26px; /* Increased from 22px */
+      margin-bottom: 50px; /* Increased from 40px */
       color: #444;
       text-align: center;
     }
 
     button {
-      padding: 12px 28px;
+      padding: 15px 35px; /* Increased padding */
       border: none;
       border-radius: 30px;
-      font-size: 16px;
+      font-size: 18px; /* Increased from 16px */
       background: #ff6b81;
       color: white;
       cursor: pointer;
       position: absolute;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
@@ -74,13 +74,13 @@
 
     #yesBtn {
       left: 25%;
-      top: 330px;
+      top: 400px; /* Adjusted for larger container */
       background: #ff85a1;
     }
 
     #noBtn {
       left: 55%;
-      top: 330px;
+      top: 400px; /* Adjusted for larger container */
       background: #ff6b81;
     }
 
@@ -91,14 +91,14 @@
     }
 
     #result img {
-      width: 150px;
-      margin-bottom: 15px;
+      width: 200px; /* Increased from 150px */
+      margin-bottom: 20px; /* Increased margin */
       border-radius: 15px;
       box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     }
 
     #result p {
-      font-size: 20px;
+      font-size: 24px; /* Increased from 20px */
       font-weight: bold;
       color: #e84393;
     }
@@ -111,7 +111,6 @@
       color: #ff4d6d;
       animation: floatUp 3s ease-in forwards;
       opacity: 0.8;
-      pointer-events: none;
     }
 
     @keyframes floatUp {
@@ -119,18 +118,19 @@
       to { transform: translateY(-250px) scale(1.5); opacity: 0; }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 650px) {
       #questionContainer {
-        min-height: 70vh;
-        padding: 20px;
+        min-height: 500px; /* Adjusted for mobile */
+        padding: 30px; /* Adjusted for mobile */
       }
+      
       #yesBtn, #noBtn {
-        font-size: 14px;
-        padding: 10px 20px;
+        font-size: 16px; /* Adjusted for mobile */
+        padding: 12px 25px; /* Adjusted for mobile */
       }
+      
       h2 {
-        font-size: 18px;
-        margin-bottom: 40px;
+        font-size: 22px; /* Adjusted for mobile */
       }
     }
   </style>
@@ -138,15 +138,15 @@
 <body>
   <div id="questionContainer">
     <img id="gif" src="https://media.giphy.com/media/ZebTmyvw85gnm/giphy.gif" alt="cute gif">
-    <h2>Do you love me? 💖</h2>
+    <h2>Do you love me nigha? 💖</h2>
     <button id="yesBtn">Yes</button>
     <button id="noBtn">No</button>
     <div id="result">
-      <img src="1.jpg" alt="love pic">
-      <p>Yay! I love you too ❤️</p>
+      <img src="1.jpg" alt="love gif">
+      <p>Yay! I love you too nigha❤️</p>
     </div>
   </div>
-
+  
   <!-- Sounds -->
   <audio id="noSound" src="1.mp3"></audio>
   <audio id="yesSound" src="2.mp3"></audio>
@@ -165,7 +165,7 @@
       const containerWidth = questionContainer.offsetWidth - noBtn.offsetWidth;
       const containerHeight = questionContainer.offsetHeight - noBtn.offsetHeight;
       const newX = Math.floor(Math.random() * containerWidth);
-      const newY = Math.floor(Math.random() * containerHeight * 0.8);
+      const newY = Math.floor(Math.random() * containerHeight);
 
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
@@ -181,7 +181,7 @@
       } 
       if (noClickCount === 5) {
         noSound.play();
-        noBtn.style.display = "none"; 
+        noBtn.style.display = "none"; // hide No button
       }
       moveNoBtn();
     });
@@ -195,7 +195,7 @@
       result.style.display = "block";
 
       // create floating hearts
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < 10; i++) {
         const heart = document.createElement("div");
         heart.classList.add("heart");
         heart.innerText = "❤️";
